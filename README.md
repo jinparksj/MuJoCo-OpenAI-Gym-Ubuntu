@@ -23,8 +23,9 @@ Now you have a virtual environment.
 4. Place your license key, `mjkey.txt`, from step 2 to ~/.mujoco/mjkey.txt  
 **Note**: This setup is primarily for [MuJoCo-Py](https://github.com/openai/mujoco-py#obtaining-the-binaries-and-license-key)
 
-## MuJoCo-Py
-1. See the [Dockerfile](https://github.com/openai/mujoco-py/blob/master/Dockerfile) for the list of canonical dependencies.
+## Docker
+1. See the [Dockerfile](https://github.com/openai/mujoco-py/blob/master/Dockerfile) for the list of canonical dependencies. If you already know how to run docker files you can go to the next section.
+2. See this [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) for a practical instillation guide of docker
 
 
 ### To Be Continued...
