@@ -2,7 +2,7 @@
 Short description of instillation process for Mujoco 1.50 with OpenAi Gym
 
 ## Ubuntu
-Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed.
+Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed. You can try with another version, but this is the one I am using.
 
 ## Anaconda
 Download the lateste version of [Anaconda](https://www.anaconda.com/download/#linux) with Python 3.6 version.  
@@ -25,10 +25,32 @@ Now you have a virtual environment.
 
 ## Docker
 1. See the [Dockerfile](https://github.com/openai/mujoco-py/blob/master/Dockerfile) for the list of canonical dependencies. If you already know how to run docker files you can go to the next section.
-2. See this [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) for a practical instillation guide of docker
+2. See this [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) for a practical instillation guide of docker. Keep in mind that you will have to run `sudo` evertime you run docker unless you change your settings which is also explained in the link.
+
+## MuJoCo-Py
+1. Git clone the repository in your hidden `.mujoco` directory:
+```
+foo@bar:~/.mujoco$ git clone https://github.com/openai/mujoco-py.git
+```
+2. Copy your MuJoCo license key, `mjkey.txt`, into your recently downloaded repository directory:
+```
+foo@bar:~/.mujoco$ cp mjkey.txt mujoco-py
+```
+3. Change your directory to the repository directory.
+4. Now you can build your docker file:
+```
+foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
+```
+**Note**: `-t` is just tagging the build with a name. Also there is a period at the very end to indicate the directory in which it will build. Take a look at this [simple tutorial](https://deis.com/blog/2015/creating-sharing-first-docker-image/) here.
+
+
 
 
 ### To Be Continued...
-Ran into some issues with the new version that supports python 3.6
+Ran into some issues with the recently released version that supports python 3.6
+
+
+
+
 
 
