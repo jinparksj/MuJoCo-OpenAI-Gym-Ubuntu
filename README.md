@@ -27,6 +27,7 @@ Now you have a virtual environment.
 1. See the [Dockerfile](https://github.com/openai/mujoco-py/blob/master/Dockerfile) for the list of canonical dependencies.
 
 
-
+### To Be Continued...
+Ran into some issues with the new version that supports python 3.6
 
 
