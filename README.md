@@ -10,7 +10,7 @@ Note that my version of Anaconda is 4.5.1
 
 ## Create Virtual Envinronment
 In the command line:  
-```
+```bash
 foo@bar:~$ conda create -n NameOfYourEnvironment python=3.6 anaconda
 ```
 This allows us to isolate the environment we are setting up just incase it breaks.  
@@ -29,16 +29,16 @@ Now you have a virtual environment.
 
 ## MuJoCo-Py
 1. Git clone the repository in your hidden `.mujoco` directory:
-```
+```bash
 foo@bar:~/.mujoco$ git clone https://github.com/openai/mujoco-py.git
 ```
 2. Copy your MuJoCo license key, `mjkey.txt`, into your recently downloaded repository directory:
-```
+```bash
 foo@bar:~/.mujoco$ cp mjkey.txt mujoco-py
 ```
 3. Change your directory to the repository directory.
 4. Now you can build your docker file:
-```
+```bash
 foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 ```
 **Note**: `-t` is just tagging the build with a name. Also there is a period at the very end to indicate the directory in which it will build. Take a look at this [simple tutorial](https://deis.com/blog/2015/creating-sharing-first-docker-image/) here.
