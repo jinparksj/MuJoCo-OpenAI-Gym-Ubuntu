@@ -18,9 +18,15 @@ Now you have a virtual environment.
 
 ## MuJoCo
 1. Go to [Mujoco](https://www.roboti.us/index.html) and follow directions to obtain a license. They have free licenses for students and a 30-free trial version.
-2. Download MuJoCo 1.50 binaries for Linux.
+2. Download MuJoCo 1.50 binaries for Linux. Right click on the file and go to properties to make sure that the file is executable before running it.
 3. Unzip `mjpro1.50` to `~/.mujoco/mjpro150`
-4. Place your license key, `mjkey.txt`, from step 2 to ~/.mujoco/mjkey.txt
+4. Place your license key, `mjkey.txt`, from step 2 to ~/.mujoco/mjkey.txt  
 **Note**: This setup is primarily for [MuJoCo-Py](https://github.com/openai/mujoco-py#obtaining-the-binaries-and-license-key)
+
+## MuJoCo-Py
+1. See the [Dockerfile](https://github.com/openai/mujoco-py/blob/master/Dockerfile) for the list of canonical dependencies.
+
+
+
 
 
