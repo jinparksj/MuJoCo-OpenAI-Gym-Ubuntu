@@ -28,7 +28,7 @@ Now you have a virtual environment.
 2. See this [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) for a practical instillation guide of docker. Keep in mind that you will have to run `sudo` evertime you run docker unless you change your settings which is also explained in the link.
 
 ## MuJoCo-Py
-1. Git clone the repository in your hidden `.mujoco` directory:
+1. Git clone the MuJoCo-Py repository in your hidden `.mujoco` directory:
 ```bash
 foo@bar:~/.mujoco$ git clone https://github.com/openai/mujoco-py.git
 ```
