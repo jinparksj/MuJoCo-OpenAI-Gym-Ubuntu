@@ -5,7 +5,7 @@ Short description of instillation process for Mujoco 1.50 with OpenAi Gym
 Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed. You can try with another version, but this is the one I am using.
 
 ## Anaconda
-Download the lateste version of [Anaconda](https://www.anaconda.com/download/#linux) with Python 3.6 version.  
+Download the latest version of [Anaconda](https://www.anaconda.com/download/#linux) with Python 3.6 version.  
 Note that my version of Anaconda is 4.5.1
 
 ## Create Virtual Envinronment
