@@ -53,6 +53,16 @@ foo@bar:~/.mujoco/mujoco-py$ pip install 'gym[all]'
 
 ## Sanity Checks
 **Note**: If you are not too familiar with how to debug some of the errors, read a little bit of the next section and come back here. It will be an iterative process. Good luck!
+1. Start your virtual environment:
+```bash
+foo@bar:~/.mujoco/mujoco-py$ conda activate YourEnvironmentName
+```
+2. Let's start off easy:
+```bash
+(MyEnv)foo@bar:~/.mujoco/mujoco-py$ python
+
+```
+
 
 
 ## Misc. Debugging Trickery
