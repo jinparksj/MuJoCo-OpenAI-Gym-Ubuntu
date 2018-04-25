@@ -1,10 +1,9 @@
 # MuJoCo OpenAI Gym Ubuntu
-Short description of installation process for MuJoCo 1.50 with OpenAI Gym on Ubuntu 16.04  
+Short description of installation process for MuJoCo-Py on MuJoCo 1.50 with OpenAI Gym on Ubuntu 16.04  
 **Note**: This is a compilation of my experiences and useful resources I found. Hope this can be a helpful little *how to guide*! 
 
 Author: Gabriel Fernandez
-GitHub: https://github.com/gabriel80808
-Email: 
+GitHub: https://github.com/gabriel80808 
 
 ## Ubuntu
 Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed. You can try with another version, but this is the one I am using.
@@ -150,14 +149,38 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-390
 ```
 ### GPU CUDA Related Errors: libOpenGL.so.0, lib*, OpenGL*, Etc
 **Note**: This does not go into the setup for CUDAs in Tensorflow. See Tensorflow's [guide](https://www.tensorflow.org/install/install_linux#NVIDIARequirements) for that. I found that majority of the difficult errors arise from having an outdated driver or somehow the wrong one. In particular it was an Nvidia card for me. Later on I will mention how on an older version of MuJoCo-Py I avoided this by simply running it off of my Intel Core i7. I possibly may do a CUDA setup installation guide in the future. Cross my fingers.    
-1. What GPU do you have:
+1. Find and keep note of GPU and other system information: 
 ```bash
-foo@bar:~$ gedit .bashrc
+foo@bar:~$ lspci | grep -i vga
+00:02.0 VGA compatible controller: Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)
+01:00.0 VGA compatible controller: NVIDIA Corporation GK107M [GeForce GT 640M] (rev a1)
+foo@bar:~$ lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+```
+**Note**: `lscpu` will produce a much longer list of information but we just want the first two lines. From the first command we typed, we found out that: My product type is GeForce, and my product series is GeForce 600M series. We are on Linux 16.04 if you forgot. The second command now tells us that my system can run 32-bit and 64-bit, and the architechture is set up for 64-bit. In the next step, 2, I want to fill in Linux 64-bit. If your system runs both, you probably want 64-bit for better performance.
+
+2. Go to the [Nvidia Driver Search Page](https://linuxconfig.org/how-to-install-the-latest-nvidia-drivers-on-ubuntu-16-04-xenial-xerus) and fill out the fields with the information we collected from step 1. The version number for mine reads 390.48. Don't worry about what comes after the decimal. You can build from source, but I decided to just use `apt-get`. For now just take note of the driver number you need and don't worry what comes after the decimal place.
+
+3. Assuming you already have a Nvidia driver installed. Restart your computer. On the start up GRUB boot menu make sure to highlight the Ubuntu entry and press the `E` key. It should bring you to a page you can edit. Don't delete anything. Just at the very end add `nouveau.modeset=0` and then press the `F10` key to continue booting.
+
+4. On the login screen enter the keys `Ctrl` + `Alt` + `F1`. Then proceed to login with your normal credentials as if you were at your normal login screen.
+
+5. Now we will delete everything related to Nvidia to start from fresh:
+```bash
+foo@bar:~$ sudo apt-get purge nvidia*
+foo@bar:~$ sudo reboot
 ```
 
+6. On the reboot repeat steps 3 and 4.
 
+7. Once we are logged back in, we can install the Nvidia drivers from the proprietary GPU drivers' PPA:
+```bash
+foo@bar:~$ sudo add-apt-repository ppa:graphics-drivers/ppa
+foo@bar:~$ sudo apt-get update
+foo@bar:~$ sudo apt-get install nvidia-390 nvidia-prime
+foo@bar:~$ sudo reboot
+```
+**Note**: Please remember to change the nvidia driver to the correct number in step 2. I additionally installed `nvidia-prime`. `nvidia-prime` allows the user to switch from the Nvidia card to Intel's. This came in handy in an older version of MuJoCo-Py. If things are really buggy, and you don't need the optimization using Intel's card might save a lot of headaches. To switch cards simply go to the Ubuntu Unity Dash (the search function) and type in Nvidia to pull up NVIDIA X Server Settings. Go to PRIME Profiles and you should see a little option to switch.
 
-
-
-
-
+## Finished! Good Job!
