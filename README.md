@@ -40,7 +40,7 @@ foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 **Note**: `-t` is just tagging the build with a name. Also there is a period at the very end to indicate the directory in which it will build. Take a look at this [simple tutorial](https://deis.com/blog/2015/creating-sharing-first-docker-image/) here.
 
 ## OpenAI Gym
-1. Go to [OpenAI](https://github.com/openai/gym)'s GitHub
+1. Go to [OpenAI](https://github.com/openai/gym)'s GitHub  
 **Note**: There are several ways to install the necessary packages needed. Keep in mind if you do a minimal instillation, you need to additionally download and install another package: `pip install -e '.[robotics]`. I will run through the full installation.
 2. Make sure all of the necessary dependencies are there or installed:
 ```bash
