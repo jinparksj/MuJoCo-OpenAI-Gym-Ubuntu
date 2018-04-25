@@ -1,6 +1,6 @@
-# Mujoco-OpenAI-Gym-Ubuntu
+# Mujoco OpenAI Gym Ubuntu
 Short description of instillation process for Mujoco 1.50 with OpenAi Gym on Ubuntu 16.04  
-**Note**: This is a compilation of my experiences and useful resources I found. Hope this can help! 
+**Note**: This is a compilation of my experiences and useful resources I found. Hope this can be a helpful little *how to guide*! 
 
 ## Ubuntu
 Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed. You can try with another version, but this is the one I am using.
@@ -40,15 +40,33 @@ foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 **Note**: `-t` is just tagging the build with a name. Also there is a period at the very end to indicate the directory in which it will build. Take a look at this [simple tutorial](https://deis.com/blog/2015/creating-sharing-first-docker-image/) here.
 
 ## OpenAI Gym
-1. Go to 
+1. Go to [OpenAI](https://github.com/openai/gym)'s GitHub
+**Note**: There are several ways to install the necessary packages needed. Keep in mind if you do a minimal instillation, you need to additionally download and install another package: `pip install -e '.[robotics]`. I will run through the full installation.
+2. Make sure all of the necessary dependencies are there or installed:
+```bash
+foo@bar:~/.mujoco/mujoco-py$ sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+```
+3. Now we can install the full package:
+```bash
+foo@bar:~/.mujoco/mujoco-py$ pip install 'gym[all]'
+```
+
+## Sanity Checks
+**Note**: If you are not too familiar with how to debug some of the errors, read a little bit of the next section and come back here. It will be an iterative process. Good luck!
 
 
-## Debugging Trickery
-**Note**: You're almost there! This section will cover how to deal with a few errors I've come across: GLFW3, GLEW, libOpenGL.so.0
+## Misc. Debugging Trickery
+**Note**: You're almost there! This section will cover how to deal with a few errors I've come across: GLFW3, GLEW, libOpenGL.so.0, missing modules, GPU issues
 
+Modify .bashrc file
 
+mujoco_py GLFW3 error fix
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
 
+mujoco_py GLEW fix
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-390/libGL.so
 
-
+mujoco_py add path to environment variable
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-390
 
 
