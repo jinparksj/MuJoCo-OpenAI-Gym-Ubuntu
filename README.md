@@ -1,5 +1,6 @@
 # Mujoco-OpenAi-Gym-Ubuntu
-Short description of instillation process for Mujoco 1.50 with OpenAi Gym on Ubuntu 16.04
+Short description of instillation process for Mujoco 1.50 with OpenAi Gym on Ubuntu 16.04  
+**Note**: This is a compilation of my experiences and useful resources I found. Hope this can help! 
 
 ## Ubuntu
 Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed. You can try with another version, but this is the one I am using.
@@ -40,9 +41,6 @@ foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 
 
 
-
-### To Be Continued...
-Ran into some issues with the recently released version that supports python 3.6
 
 
 
