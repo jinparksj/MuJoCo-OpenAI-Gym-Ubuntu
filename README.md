@@ -122,19 +122,26 @@ False
 ## Misc. Debugging Trickery
 **Note**: You're almost there! This section will cover how to deal with a few errors I've come across: missing modules, GLFW3, GLEW, libOpenGL.so.0 & other lib errors associated with GPU CUDAs.
 
-1. Dealing with missing modules:  
-As far as python modules go, you will usually get errors that say some module is missing. Simply `pip install` the missing module. If you receive longer compiling errors, especially those with the term `lib` in it, that usually means the GPU libraries are set up incorrectly. See following [sections](#openai-gym).
+### Missing Modules:  
+As far as python modules go, you will usually get errors that say some module is missing. Simply `pip install` the missing module. If you receive longer compiling errors, especially those with the term `lib` in it, that usually means the GPU libraries are set up incorrectly. See the following sections.
 
-
-Modify .bashrc file
-
-mujoco_py GLFW3 error fix
+### Modifying `.bashrc` for GLEW, GLFW3 Errors, and More
+**Note**: `.bashrc` is a shell script that Bash runs when it starts. That means if you modify it, you have to open a new terminal to run the updated shell script. You can just append these lines to the bottom of your `.bashrc` file. It's a hidden file, so to see it you will need to type in `ls -al` into your terminal. You will need to also open `.bashrc` with an editor such as Sublime or you probably can just type `gedit`. You can probably do the following to get to the file:
+```bash
+foo@bar:~$ gedit .bashrc
+```
+1. Add this line in `.bashrc` to fix MuJoCo-Py GLFW3 error:
+```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
-
-mujoco_py GLEW fix
+```
+2. Add this line in `.bashrc` to fix MuJoCo-Py GLEW error:
+```bash
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-390/libGL.so
+```
+**Note**: The original thread on this error is [here](https://github.com/openai/mujoco-py/pull/145). Check what Nvidia driver you have installed on your system by following the directory path. Mine is `nvidia-390`. Change your number to match your driver. This also applies to the next step, 3.
 
-mujoco_py add path to environment variable
+3. Add this line in `.bashrc` for the MuJoCo-Py environment variable:
+```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-390
-
+```
 
