@@ -1,4 +1,4 @@
-# Mujoco-OpenAi-Gym-Ubuntu
+# Mujoco-OpenAI-Gym-Ubuntu
 Short description of instillation process for Mujoco 1.50 with OpenAi Gym on Ubuntu 16.04  
 **Note**: This is a compilation of my experiences and useful resources I found. Hope this can help! 
 
@@ -39,7 +39,12 @@ foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 ```
 **Note**: `-t` is just tagging the build with a name. Also there is a period at the very end to indicate the directory in which it will build. Take a look at this [simple tutorial](https://deis.com/blog/2015/creating-sharing-first-docker-image/) here.
 
+## OpenAI Gym
+1. Go to 
 
+
+## Debugging Trickery
+**Note**: You're almost there! This section will cover how to deal with a few errors I've come across: GLFW3, GLEW, libOpenGL.so.0
 
 
 
