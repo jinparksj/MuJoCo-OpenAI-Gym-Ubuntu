@@ -2,6 +2,10 @@
 Short description of installation process for MuJoCo 1.50 with OpenAI Gym on Ubuntu 16.04  
 **Note**: This is a compilation of my experiences and useful resources I found. Hope this can be a helpful little *how to guide*! 
 
+Author: Gabriel Fernandez
+GitHub: https://github.com/gabriel80808
+Email: 
+
 ## Ubuntu
 Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) installed. You can try with another version, but this is the one I am using.
 
