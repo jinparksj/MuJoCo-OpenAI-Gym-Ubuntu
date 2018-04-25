@@ -145,7 +145,14 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-390/libGL
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-390
 ```
 ### GPU CUDA Related Errors: libOpenGL.so.0, lib*, OpenGL*, Etc
-**Note**: This does not go into the setup for CUDAs in Tensorflow. See Tensorflow's [guide](https://www.tensorflow.org/install/install_linux#NVIDIARequirements) for that. I found that majority of the difficult errors arise from having an outdated driver or somehow the wrong one. In particular it was an Nvidia card for me. Later on I will mention how on an older version of MuJoCo-Py I avoided this by simply running it off of my Intel Core i7. I possibly may do a CUDA setup installation guide in the future. Cross my fingers.
+**Note**: This does not go into the setup for CUDAs in Tensorflow. See Tensorflow's [guide](https://www.tensorflow.org/install/install_linux#NVIDIARequirements) for that. I found that majority of the difficult errors arise from having an outdated driver or somehow the wrong one. In particular it was an Nvidia card for me. Later on I will mention how on an older version of MuJoCo-Py I avoided this by simply running it off of my Intel Core i7. I possibly may do a CUDA setup installation guide in the future. Cross my fingers.    
+1. What GPU do you have:
+```bash
+foo@bar:~$ gedit .bashrc
+```
+
+
+
 
 
 
