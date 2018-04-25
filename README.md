@@ -2,7 +2,7 @@
 Short description of installation process for MuJoCo-Py on MuJoCo 1.50 with OpenAI Gym on Ubuntu 16.04  
 **Note**: This is a compilation of my experiences and useful resources I found. Hope this can be a helpful little *how to guide*! 
 
-Author: Gabriel Fernandez
+Author: Gabriel Fernandez  
 GitHub: https://github.com/gabriel80808 
 
 ## Ubuntu
