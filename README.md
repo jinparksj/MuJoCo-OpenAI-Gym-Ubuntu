@@ -66,10 +66,9 @@ foo@bar:~/.mujoco/mujoco-py$ conda activate YourEnvironmentName
 >>> import mujoco_py
 >>>
 ```
-**Note**: If you see any errors or warnings, that means we got a lot of debugging to do. See the next section.
-3. Run a slightly modified example from MuJoCo-Py:
+**Note**: If you see any errors or warnings, that means we got a lot of debugging to do. See the next section.  
+3. Run a slightly modified example from MuJoCo-Py:  
 **Note**: You should get the same results here unlike the next one. Remember when you load the model you will have to change `foo` to your directory name.
-
 ```python
 >>> import mujoco_py
 >>> model = mujoco_py.load_model_from_path("/home/foo/.mujoco/mujoco-py/xmls/claw.xml")
