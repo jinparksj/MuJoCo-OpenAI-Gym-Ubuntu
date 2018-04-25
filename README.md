@@ -57,13 +57,67 @@ foo@bar:~/.mujoco/mujoco-py$ pip install 'gym[all]'
 ```bash
 foo@bar:~/.mujoco/mujoco-py$ conda activate YourEnvironmentName
 ```
-2. Let's start off easy:
+2. Let's start off easy and pull up python and import mujoco_py:
 ```bash
 (MyEnv)foo@bar:~/.mujoco/mujoco-py$ python
 
 ```
+```python
+>>> import mujoco_py
+>>>
+```
+**Note**: If you see any errors or warnings, that means we got a lot of debugging to do. See the next section.
+3. Run a slightly modified example from MuJoCo-Py:
+**Note**: You should get the same results here unlike the next one. Remember when you load the model you will have to change `foo` to your directory name.
 
-
+```python
+>>> import mujoco_py
+>>> model = mujoco_py.load_model_from_path("/home/foo/.mujoco/mujoco-py/xmls/claw.xml")
+>>> sim = mujoco_py.MjSim(model)
+>>> print(sim.data.qpos)
+[ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+>>> sim.step()
+>>> print(sim.data.qpos)
+[  2.09217903e-06  -1.82329050e-12  -1.16711384e-07  -4.69613872e-11
+  -1.43931860e-05   4.73350204e-10  -3.23749942e-05  -1.19854057e-13
+  -2.39251380e-08  -4.46750545e-07   1.78771599e-09  -1.04232280e-08]
+```
+4. Now we can run a more involved check:
+```python
+>>> import mujoco_py
+>>> import gym
+>>> import numpy as np
+>>> env = gym.make('HalfCheetah-v2')
+WARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.
+WARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.
+```
+**Note**: Don't worry about the warning. It's a bug as far as I can tell. There's no way to fix the error without going into the code and basically removing it or initializing it in a function. Additionally, for this example you will get different values from me, so there's no need to freak out. Let's continue.
+```python
+>>> print(env.action_space)
+Box(6,)
+>>> print(env.observation_space)
+Box(17,)
+>>> init_observation = env.reset()
+>>> init_observation
+array([-0.09592622, -0.00758505,  0.04018139, -0.04553654, -0.03117339,
+       -0.0567909 , -0.05794625,  0.01240102,  0.00091251,  0.10259654,
+        0.03697612, -0.09892215, -0.00347502,  0.06516283,  0.03751707,
+        0.15983774, -0.00057076])
+>>> action = np.array([0.1, 0.1, 0.1, 0.1, 0.1, 0.1], dtype='float32')
+>>> env.render()
+Creating window glfw
+>>> obs, reward, done, info = env.step(action)
+>>> obs
+array([-0.09596615,  0.00432398,  0.01885579,  0.05236691, -0.02897269,
+       -0.00611233, -0.00573494,  0.01972231,  0.27388623, -0.15326082,
+        0.24379943, -0.05508176,  1.60848039,  1.13358126,  1.53246801,
+        1.44243414,  0.29057963])
+>>> reward
+0.17909146134763032
+>>> done
+False
+>>> env.render()
+```
 
 ## Misc. Debugging Trickery
 **Note**: You're almost there! This section will cover how to deal with a few errors I've come across: GLFW3, GLEW, libOpenGL.so.0, missing modules, GPU issues
