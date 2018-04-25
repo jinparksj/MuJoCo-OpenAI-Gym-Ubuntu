@@ -1,4 +1,4 @@
-# Mujoco OpenAI Gym Ubuntu
+# MuJoCo OpenAI Gym Ubuntu
 Short description of instillation process for Mujoco 1.50 with OpenAi Gym on Ubuntu 16.04  
 **Note**: This is a compilation of my experiences and useful resources I found. Hope this can be a helpful little *how to guide*! 
 
