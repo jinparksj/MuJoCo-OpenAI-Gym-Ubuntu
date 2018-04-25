@@ -67,6 +67,7 @@ foo@bar:~/.mujoco/mujoco-py$ conda activate YourEnvironmentName
 >>>
 ```
 **Note**: If you see any errors or warnings, that means we got a lot of debugging to do. See the next section.  
+
 3. Run a slightly modified example from MuJoCo-Py:  
 **Note**: You should get the same results here unlike the next one. Remember when you load the model you will have to change `foo` to your directory name.
 ```python
@@ -119,7 +120,11 @@ False
 ```
 
 ## Misc. Debugging Trickery
-**Note**: You're almost there! This section will cover how to deal with a few errors I've come across: GLFW3, GLEW, libOpenGL.so.0, missing modules, GPU issues
+**Note**: You're almost there! This section will cover how to deal with a few errors I've come across: missing modules, GLFW3, GLEW, libOpenGL.so.0 & other lib errors associated with GPU CUDAs.
+
+1. Dealing with missing modules:  
+As far as python modules go, you will usually get errors that say some module is missing. Simply `pip install` the missing module. If you receive longer compiling errors, especially those with the term `lib` in it, that usually means the GPU libraries are set up incorrectly. See following [sections](#openai-gym).
+
 
 Modify .bashrc file
 
