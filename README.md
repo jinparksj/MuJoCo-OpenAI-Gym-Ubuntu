@@ -14,6 +14,11 @@ Make sure to have [Ubuntu 16.04](https://www.ubuntu.com/download/desktop) instal
 ```bash
 foo@bar:~$ conda create -n NameOfYourEnvironment python=3.6 anaconda
 ```
+3. Start your virtual environment:
+```bash
+foo@bar:~$ conda activate EnvName
+```
+**Note**: You can stay within your virtual environment throughout this process. Where you see `(MyEnv)` in this tutorial it is generally okay to be within your virtual environment. When you modify your python environment you want to be inside your virtual environment. Otherwise it's optional. If you're not sure, it's generally fine throughout this tutorial.
 
 ## MuJoCo
 1. Go to [Mujoco](https://www.roboti.us/index.html) and follow directions to obtain a license. They have free licenses for students and a 30-free trial version.
@@ -29,16 +34,16 @@ foo@bar:~$ conda create -n NameOfYourEnvironment python=3.6 anaconda
 ## MuJoCo-Py
 1. Git clone the MuJoCo-Py repository in your hidden `.mujoco` directory:
 ```bash
-foo@bar:~/.mujoco$ git clone https://github.com/openai/mujoco-py.git
+(MyEnv)foo@bar:~/.mujoco$ git clone https://github.com/openai/mujoco-py.git
 ```
 2. Copy your MuJoCo license key, `mjkey.txt`, into your recently downloaded repository directory:
 ```bash
-foo@bar:~/.mujoco$ cp mjkey.txt mujoco-py
+(MyEnv)foo@bar:~/.mujoco$ cp mjkey.txt mujoco-py
 ```
 3. Change your directory to the repository directory.
 4. Now you can build your docker file:
 ```bash
-foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
+(MyEnv)foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 ```
 **Note**: `-t` is just tagging the build with a name. Also there is a period at the very end to indicate the directory in which it will build. Take a look at this [simple tutorial](https://deis.com/blog/2015/creating-sharing-first-docker-image/) here.
 
@@ -47,16 +52,16 @@ foo@bar:~/.mujoco/mujoco-py$ sudo docker build -t mujoco_doc .
 **Note**: There are several ways to install the necessary packages needed. Keep in mind if you do a minimal instillation, you need to additionally download and install another package: `pip install -e '.[robotics]`. I will run through the full installation.
 2. Make sure all of the necessary dependencies are there or installed:
 ```bash
-foo@bar:~/.mujoco/mujoco-py$ sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+(MyEnv)foo@bar:~/.mujoco/mujoco-py$ sudo apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
 ```
 3. Now we can install the full package:
 ```bash
-foo@bar:~/.mujoco/mujoco-py$ pip install 'gym[all]'
+(MyEnv)foo@bar:~/.mujoco/mujoco-py$ pip install 'gym[all]'
 ```
 
 ## Sanity Checks
 **Note**: If you are not too familiar with how to debug some of the errors, read a little bit of the next section and come back here. It will be an iterative process. Good luck!
-1. Start your virtual environment:
+1. Start your virtual environment if you haven't done so:
 ```bash
 foo@bar:~/.mujoco/mujoco-py$ conda activate YourEnvironmentName
 ```
@@ -131,7 +136,7 @@ As far as python modules go, you will usually get errors that say some module is
 ### Modifying `.bashrc` for GLEW, GLFW3 Errors, and More
 **Note**: `.bashrc` is a shell script that Bash runs when it starts. That means if you modify it, you have to open a new terminal to run the updated shell script. You can just append these lines to the bottom of your `.bashrc` file. It's a hidden file, so to see it you will need to type in `ls -al` into your terminal. You will need to also open `.bashrc` with an editor such as Sublime or you probably can just type `gedit`. You can probably do the following to get to the file:
 ```bash
-foo@bar:~$ gedit .bashrc
+(MyEnv)foo@bar:~$ gedit .bashrc
 ```
 1. Add this line in `.bashrc` to fix MuJoCo-Py GLFW3 error:
 ```bash
