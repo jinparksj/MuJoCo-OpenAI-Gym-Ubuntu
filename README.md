@@ -188,4 +188,5 @@ foo@bar:~$ sudo reboot
 ```
 **Note**: Please remember to change the nvidia driver to the correct number in step 2. I additionally installed `nvidia-prime`. `nvidia-prime` allows the user to switch from the Nvidia card to Intel's. This came in handy in an older version of MuJoCo-Py. If things are really buggy, and you don't need the optimization using Intel's card might save a lot of headaches. To switch cards simply go to the Ubuntu Unity Dash (the search function) and type in Nvidia to pull up NVIDIA X Server Settings. Go to PRIME Profiles and you should see a little option to switch.
 
-## Finished! Good Job!
+## Finished!
+Hopefully, this was somewhat helpful. I am very new to the community. This is one of the ways I am trying to give back. Please leave comments or suggestions so that I can modify this to be better. I know how stressful it is getting this set up.
