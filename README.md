@@ -229,14 +229,19 @@ Tip 1: When you install mujoco_py, I experienced install errors several times.
 My case is solved with installation as 'python setup.py install' at mujoco_py folder.
 
 cd ~/.mujoco
+
 git clone https://github.com/openai/mujoco-py.git
+
 pip3 install -r requirements.txt
+
 pip3 install -r requirements.dev.txt
+
 python setup.py install
 
 Tip 2: In addition, there is .bashrc update with below 'export' lines.
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jin/.mujoco/mjpro150/bin
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-396
 
 The second line is little bit tricky. Even though you install mujoco_py, it will not work without NVIDIA driver.
@@ -260,8 +265,11 @@ I installed CUDA 9.0 referring below link and should change command like below.
 https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal
 
 `sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb`
+
 `sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub`
+
 `sudo apt-get update`
+
 `sudo apt-get install cuda-9.0`
 
 
@@ -271,25 +279,35 @@ Tip 1: When you type 'sudo apt-get install cuda', it will install the latest ver
 Tip 2: Need to install dependencies before install CUDA 9.0.
 
 sudo apt-get install build-essential 
+
 sudo apt-get install cmake git unzip zip
+
 sudo add-apt-repository ppa:deadsnakes/ppa
+
 sudo apt-get update
+
 sudo apt-get install python2.7-dev python3.5-dev python3.6-dev pylint
 
 Tip 3: Need to remove all NVIDIA packages and left-over in your UBUNTU.
 
 sudo apt-get purge nvidia*
+
 sudo apt-get autoremove
+
 sudo apt-get autoclean
+
 sudo rm -rf /usr/local/cuda*
 
 Tip 4: Update .bashrc
 
 echo 'export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}' >> ~/.bashrc
+
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 
 source ~/.bashrc
+
 sudo ldconfig
+
 nvidia-smi
 
 Tip 5: 'nvidia-smi' should be working after installation of CUDA 9.0.
@@ -323,7 +341,9 @@ Wed Aug  8 18:34:09 2018
 6. cuDNN 7.1.4
 
 tar -xf cudnn-9.2-linux-x64-v7.1.tgz
+
 sudo cp -R cuda/include/* /usr/local/cuda-9.0/include
+
 sudo cp -R cuda/lib64/* /usr/local/cuda-9.0/lib64
 
 Tip 1: I recommend you install CUDA 9.0, because when you do section 8 at below instruction, sometimes, the latest version of CUDA, CUDA 9.2, is not compatible with Tensorflow configure.
@@ -332,15 +352,21 @@ Tip 1: I recommend you install CUDA 9.0, because when you do section 8 at below 
 7. NCCL 2.2.13
 
 wget -q https://s3.amazonaws.com/pytorch/nccl_2.2.13-1%2Bcuda9.0_x86_64.txz
+
 tar -xf nccl_2.2.13-1+cuda9.0_x86_64.txz
+
 cd nccl_2.2.13-1+cuda9.0_x86_64
+
 sudo cp -R * /usr/local/cuda-9.0/targets/x86_64-linux/
+
 sudo ldconfig
 
 Tip 1: Install dependencies after installing NCCL with below command lines
 
 sudo apt-get install libcupti-dev
+
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+
 sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
 
 
@@ -349,22 +375,32 @@ sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
 Tip 1: The latest version of BAZEL is 0.14.0. Sometimes, it doesn't work at the end and I recommend you install old version of BAZEL. When I googled to solve the issue, some instruction recommended install 0.12.0 to make compatibility with CUDA 9.0.
 
 cd ~/
+
 wget https://github.com/bazelbuild/bazel/releases/download/0.12.0/bazel-0.12.0-installer-linux-x86_64.sh
+
 chmod +x bazel-0.12.0-installer-linux-x86_64.sh
+
 ./bazel-0.12.0-installer-linux-x86_64.sh --user
+
 echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc
 
 source ~/.bashrc
+
 sudo ldconfig
 
 9. Tensorflow with GPU 1.8.0
 
 
 cd ~/
+
 git clone https://github.com/tensorflow/tensorflow.git
+
 cd tensorflow
+
 git pull
+
 git checkout r1.8
+
 ./configure
 
 Tip 1: I followed below configuration process.
@@ -372,36 +408,59 @@ Tip 1: I followed below configuration process.
 Please specify the location of python. [Default is /usr/bin/python]: /usr/bin/python3
 
 Do you wish to build TensorFlow with jemalloc as malloc support? [Y/n]: Y
+
 Do you wish to build TensorFlow with Google Cloud Platform support? [Y/n]: Y
+
 Do you wish to build TensorFlow with Hadoop File System support? [Y/n]: Y
+
 Do you wish to build TensorFlow with Amazon S3 File System support? [Y/n]: Y
+
 Do you wish to build TensorFlow with Apache Kafka Platform support? [Y/n]: Y
+
 Do you wish to build TensorFlow with XLA JIT support? [y/N]: N
+
 Do you wish to build TensorFlow with GDR support? [y/N]: N
+
 Do you wish to build TensorFlow with VERBS support? [y/N]: N
+
 Do you wish to build TensorFlow with OpenCL SYCL support? [y/N]: N
+
 Do you wish to build TensorFlow with CUDA support? [y/N]: Y
+
 Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to default to CUDA 9.0]: 9.0
+
 Please specify the location where CUDA 9.0 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: /usr/local/cuda-9.0
+
 Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: 7.1.4
+
 Please specify the location where cuDNN 7 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda-9.0]: /usr/local/cuda-9.0
+
 Do you wish to build TensorFlow with TensorRT support? [y/N]: N
+
 Please specify the NCCL version you want to use. [Leave empty to default to NCCL 1.3]: 2.2.13
+
 Please specify the location where NCCL 2 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda-9.0]: /usr/local/cuda-9.0/targets/x86_64-linux
 
 Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 5.0] 5.0
 
 Do you want to use clang as CUDA compiler? [y/N]: N
+
 Please specify which gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]: /usr/bin/gcc
+
 Do you wish to build TensorFlow with MPI support? [y/N]: N
+
 Please specify optimization flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native]: -march=native
+
 Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:N
 
 Tip 2: After configuration, I installed with Bazel with below command lines.
 It take one hour for me to install tensorflow with GPU through bazel.
 
 bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+
 bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow_pkg
+
 cd tensorflow_pkg
+
 pip3 install tensorflow*.whl
 
