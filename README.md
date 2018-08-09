@@ -190,3 +190,8 @@ foo@bar:~$ sudo reboot
 
 ## Finished!
 Hopefully, this was somewhat helpful. I am very new to the community. This is one of the ways I am trying to give back. Please leave comments or suggestions so that I can modify this to be better. I know how stressful it is getting this set up.
+
+
+## Add Jin's comments
+I would like to share my successful set-up history adding to the contributor's instruction.
+
