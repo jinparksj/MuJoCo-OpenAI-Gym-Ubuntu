@@ -1,0 +1,10 @@
+1. Authorize Thunderbolt 3
+$ cat /sys/bus/thunderbolt/devices/0-1/device_name 
+$ sudo sh -c 'echo 1 > /sys/bus/thunderbolt/devices/0-1/authorized'
+
+2. eGPU will start with the authorization
+$ lspci | grep NVIDIA
+
+3. Operating together internal and external GPUs
+CUDA_VISIBLE_DEVICES=0,1 python ~~~~.py
+
